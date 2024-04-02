@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import inquirer from "inquirer";
+import { todo } from "node:test";
 
-let todos: string[] = [""];
+let todos: string[] = [];
 let loop: boolean = true;
 
 while (loop) {
@@ -21,21 +22,14 @@ while (loop) {
       default: false,
     },
   ]);
-  const { TODO, AddMore } = answers;
-  console.log(answers);
-  loop = AddMore;
-  if (TODO) {
-    todos.push(TODO);
-  } else {
-    console.log("Kindly enter valid input");
-  }
-  console.log("Your Todo List:");
+  
+  
+  todos.push(answers.TODO);
+  loop = answers.AddMore;
+  console.log(todos);
 
-  if (todos.length > 0) {
-    todos.forEach((todo) => {
-      console.log(todo);
-    });
-  } else {
-    console.log("Todos Not Found!");
   }
-}
+  
+  
+
+  

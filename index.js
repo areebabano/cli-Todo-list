@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import inquirer from "inquirer";
-let todos = [""];
+let todos = [];
 let loop = true;
 while (loop) {
     const answers = await inquirer.prompt([
@@ -16,22 +16,7 @@ while (loop) {
             default: false,
         },
     ]);
-    const { TODO, AddMore } = answers;
-    console.log(answers);
-    loop = AddMore;
-    if (TODO) {
-        todos.push(TODO);
-    }
-    else {
-        console.log("Kindly enter valid input");
-    }
-    console.log("Your Todo List:");
-    if (todos.length > 0) {
-        todos.forEach((todo) => {
-            console.log(todo);
-        });
-    }
-    else {
-        console.log("Todos Not Found!");
-    }
+    todos.push(answers.TODO);
+    loop = answers.AddMore;
+    console.log(todos);
 }
